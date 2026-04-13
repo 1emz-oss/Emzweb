@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emz Dash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Mini Game Website</p>
+        <h1>Emz Dash</h1>
+        <p class="sub">Jump over incoming blocks, survive as long as you can, and save your score to the leaderboard.</p>
+      </div>
+      <div class="stats">
+        <div class="card"><span>Score</span><strong id="score">0</strong></div>
+        <div class="card"><span>Best</span><strong id="best">0</strong></div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="game-panel">
+        <div class="controls">
+          <button id="startBtn">Start Game</button>
+          <button id="jumpBtn">Jump</button>
+        </div>
+        <div class="game-shell">
+          <div id="game">
+            <div id="player"></div>
+            <div id="obstacle"></div>
+            <div class="ground"></div>
+          </div>
+        </div>
+        <p class="help">Press <strong>Space</strong> or tap <strong>Jump</strong> to avoid obstacles.</p>
+      </section>
+
+      <aside class="leaderboard-panel">
+        <div class="leaderboard-head">
+          <h2>Leaderboard</h2>
+          <button id="clearBoard" class="ghost">Clear</button>
+        </div>
+        <form id="saveForm" class="save-form">
+          <input id="playerName" maxlength="18" placeholder="Enter your name" />
+          <button type="submit">Save Score</button>
+        </form>
+        <ol id="leaderboard"></ol>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
