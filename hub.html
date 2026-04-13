@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emz Arcade - Crossroads District Tycoon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#081120;--bg2:#0d1830;--card:rgba(17,24,39,.72);--line:rgba(255,255,255,.12);--text:#e5eefc;--muted:#98a7c7;--blue:#4cc9f0;--purple:#8b5cf6;--pink:#ff4ecd;--lime:#9ef01a;--gold:#ffd166}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,sans-serif;background:radial-gradient(circle at top,#13254d 0,#081120 45%,#050b16 100%);color:var(--text)}
+    a{text-decoration:none;color:inherit}.container{width:min(1180px,92vw);margin:0 auto}.nav{position:sticky;top:0;backdrop-filter:blur(14px);background:rgba(5,11,22,.62);border-bottom:1px solid var(--line);z-index:20}.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}.brand{font-weight:900;letter-spacing:.04em}.brand span{color:var(--blue)}.nav-links{display:flex;gap:18px;color:var(--muted);font-size:14px}.cta{padding:12px 18px;border-radius:14px;background:linear-gradient(90deg,var(--blue),var(--pink));color:#081120;font-weight:800;box-shadow:0 10px 40px rgba(76,201,240,.25)}
+    .hero{padding:72px 0 36px;position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--blue);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(42px,7vw,84px);line-height:.96;margin:18px 0 14px}.grad{background:linear-gradient(90deg,var(--blue),#b388ff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:18px;color:var(--muted);max-width:660px;line-height:1.7}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:24px 0 16px}.ghost{padding:12px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:700}.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}.stat{padding:18px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03))}.stat strong{display:block;font-size:28px}.stat span{color:var(--muted);font-size:13px}
+    .showcase{position:relative;padding:22px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(139,92,246,.18),rgba(17,24,39,.8));box-shadow:0 18px 60px rgba(139,92,246,.18)}.screen{border-radius:22px;padding:20px;background:linear-gradient(180deg,#101a34,#0a1020);border:1px solid rgba(255,255,255,.08)}.topbar{display:flex;justify-content:space-between;gap:10px;margin-bottom:16px}.pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:12px;color:var(--muted)}.city{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tile{height:78px;border-radius:18px;background:linear-gradient(180deg,rgba(76,201,240,.18),rgba(255,255,255,.04));border:1px solid var(--line);position:relative;overflow:hidden}.tile::after{content:'';position:absolute;inset:auto 10px 10px 10px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--lime),var(--blue));opacity:.6}.tile.alt{background:linear-gradient(180deg,rgba(255,78,205,.18),rgba(255,255,255,.04))}.tile.gold{background:linear-gradient(180deg,rgba(255,209,102,.22),rgba(255,255,255,.04))}
+    .section{padding:34px 0}.section h2{font-size:clamp(30px,4vw,48px);margin:0 0 12px}.section p.lead{color:var(--muted);max-width:760px;line-height:1.75}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}.card{padding:22px;border-radius:24px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(12px);box-shadow:0 18px 50px rgba(0,0,0,.16)}.card h3{margin:0 0 10px;font-size:22px}.card p,.card li{color:var(--muted);line-height:1.65}.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.tag{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:12px;color:#dbe8ff}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}.feature{padding:24px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03))}.feature h3{margin:0 0 10px;font-size:24px}.feature ul{margin:0;padding-left:18px}.feature li{margin:8px 0;color:var(--muted)}
+    .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}.phase{padding:20px;border-radius:24px;background:linear-gradient(180deg,rgba(76,201,240,.12),rgba(255,255,255,.03));border:1px solid var(--line)}.phase:nth-child(2){background:linear-gradient(180deg,rgba(139,92,246,.14),rgba(255,255,255,.03))}.phase:nth-child(3){background:linear-gradient(180deg,rgba(255,78,205,.14),rgba(255,255,255,.03))}.phase:nth-child(4){background:linear-gradient(180deg,rgba(158,240,26,.14),rgba(255,255,255,.03))}.phase h3{margin:0 0 12px}.phase ul{padding-left:18px;margin:0}.phase li{margin:8px 0;color:var(--muted)}
+    .footer{padding:34px 0 70px;color:var(--muted)}.footer-box{padding:24px;border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;gap:18px}
+    @media (max-width: 980px){.hero-grid,.cards,.roadmap,.feature-grid{grid-template-columns:1fr}.hero-stats{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.footer-box{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">EMZ <span>ARCADE</span></div>
+      <div class="nav-links">
+        <a href="#hub">Hub</a>
+        <a href="#tycoon">Tycoon</a>
+        <a href="#systems">Systems</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+      <a class="cta" href="https://github.com/1emz-oss/Emzweb">Open Repo</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Game Hub Vision • Tycoon Showcase</div>
+        <h1>Build a sticky, stylish <span class="grad">game universe</span> around Emz Arcade.</h1>
+        <p>A polished game hub concept with quick-play games, progression loops, social rewards, and one centerpiece experience: <strong>Crossroads District Tycoon</strong>, a layered city-building tycoon designed for long sessions, replayability, and strong player retention.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#tycoon">Explore the Tycoon</a>
+          <a class="ghost" href="index.html">Open Runner Game</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>10+</strong><span>hub game categories</span></div>
+          <div class="stat"><strong>4</strong><span>planned release phases</span></div>
+          <div class="stat"><strong>7</strong><span>core tycoon systems</span></div>
+          <div class="stat"><strong>∞</strong><span>optimization loops</span></div>
+        </div>
+      </div>
+      <div class="showcase">
+        <div class="screen">
+          <div class="topbar">
+            <span class="pill">Coins 42,580</span>
+            <span class="pill">Population 12,940</span>
+            <span class="pill">Reputation Neon Capital</span>
+          </div>
+          <div class="city">
+            <div class="tile"></div>
+            <div class="tile alt"></div>
+            <div class="tile gold"></div>
+            <div class="tile"></div>
+            <div class="tile alt"></div>
+            <div class="tile gold"></div>
+            <div class="tile"></div>
+            <div class="tile alt"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="hub" class="section">
+    <div class="container">
+      <h2>Emz Arcade as a full hub</h2>
+      <p class="lead">The hub should feel like a destination, not a single game page. It should combine fast, snackable games with deeper progression and a premium visual layer that keeps people tapping, collecting, and coming back.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Quick Play</h3>
+          <p>Short-session games that are easy to start and hard to stop, designed for immediate replay and score chasing.</p>
+          <div class="tag-row">
+            <span class="tag">Endless Runner</span><span class="tag">Tap Survival</span><span class="tag">Reaction Game</span><span class="tag">Memory Match</span><span class="tag">Dodge Arena</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Competitive Layer</h3>
+          <p>Turn sessions into goals with visible progression and ranking pressure.</p>
+          <div class="tag-row">
+            <span class="tag">Daily Challenge</span><span class="tag">Speedrun</span><span class="tag">Score Attack</span><span class="tag">Ranked Board</span><span class="tag">Weekly Events</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Progression & Identity</h3>
+          <p>Players should grow a profile, not just post a score. Cosmetics, badges, currencies, streaks, and unlocks make the hub feel alive.</p>
+          <div class="tag-row">
+            <span class="tag">Coins</span><span class="tag">Gems</span><span class="tag">Skins</span><span class="tag">Quests</span><span class="tag">Prestige</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tycoon" class="section">
+    <div class="container">
+      <h2>Flagship concept: Crossroads District Tycoon</h2>
+      <p class="lead">You do not manage a single store. You grow a connected district where housing, food, nightlife, transport, logistics, tourism, and reputation all affect each other. Every upgrade has second-order consequences, which makes the city feel alive and keeps decisions meaningful.</p>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Core fantasy</h3>
+          <ul>
+            <li>Start with a tiny block and grow into a dense commercial and entertainment district.</li>
+            <li>Shape your city identity through build choices, public mood, and economic strategy.</li>
+            <li>Balance profit, happiness, beauty, traffic flow, safety, and reputation.</li>
+            <li>Create a district that becomes famous for luxury, nightlife, family fun, or eco-smart design.</li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Main hook</h3>
+          <ul>
+            <li>More apartments create more residents, workers, and shoppers.</li>
+            <li>Parks raise land value, happiness, and retention.</li>
+            <li>Transit increases foot traffic, tourism, and event attendance.</li>
+            <li>Nightlife boosts revenue at night but increases complaints and infrastructure stress.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="systems" class="section">
+    <div class="container">
+      <h2>Systems that make it addictive</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Zoning & layout</h3>
+          <p>Residential, retail, food, entertainment, office, logistics, public services, and recreation each create benefits and tensions. Layout matters because adjacency changes performance.</p>
+        </article>
+        <article class="card">
+          <h3>Foot traffic simulation</h3>
+          <p>Residents, tourists, students, commuters, VIPs, and delivery drivers move through your district with different schedules, budgets, and needs.</p>
+        </article>
+        <article class="card">
+          <h3>Mood & satisfaction</h3>
+          <p>Cleanliness, noise, convenience, affordability, wait times, and beauty all influence retention and spending behavior.</p>
+        </article>
+        <article class="card">
+          <h3>Supply chain</h3>
+          <p>Shops need stock, restaurants need ingredients, venues need staff, and warehouses need routes. Good logistics quietly multiplies profits.</p>
+        </article>
+        <article class="card">
+          <h3>Day and night economy</h3>
+          <p>Different zones dominate at different times. Dead zones become optimization puzzles, not just decoration.</p>
+        </article>
+        <article class="card">
+          <h3>Events & identity</h3>
+          <p>Food festivals, music nights, market weekends, and gaming expos create spikes in income while pushing your systems to the limit.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Standout features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Synergy chains</h3>
+          <p class="lead">One smart placement creates ripple effects across the whole district.</p>
+          <ul>
+            <li>Park near apartments → happier residents</li>
+            <li>Happier residents → more local shopping</li>
+            <li>More shopping → stronger retail revenue</li>
+            <li>More revenue → better services and rating</li>
+          </ul>
+        </div>
+        <div class="feature">
+          <h3>Heatmaps</h3>
+          <ul>
+            <li>Traffic heatmap</li>
+            <li>Profit heatmap</li>
+            <li>Noise heatmap</li>
+            <li>Cleanliness heatmap</li>
+            <li>Tourism heatmap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="section">
+    <div class="container">
+      <h2>Roadmap to a finished addictive game</h2>
+      <p class="lead">A staged plan keeps the scope practical while still building toward a big, memorable flagship experience.</p>
+      <div class="roadmap">
+        <div class="phase">
+          <h3>Version 1</h3>
+          <ul><li>One map</li><li>Build mode</li><li>6 building types</li><li>Money loop</li><li>Local saves</li><li>Basic happiness and traffic</li></ul>
+        </div>
+        <div class="phase">
+          <h3>Version 2</h3>
+          <ul><li>Events</li><li>More zoning</li><li>District identities</li><li>Quests</li><li>Achievements</li></ul>
+        </div>
+        <div class="phase">
+          <h3>Version 3</h3>
+          <ul><li>Prestige</li><li>Multiple districts</li><li>Heatmaps</li><li>Rare visitors</li><li>Manager cards</li></ul>
+        </div>
+        <div class="phase">
+          <h3>Version 4</h3>
+          <ul><li>Online leaderboard</li><li>Cloud save</li><li>Social visits</li><li>Daily challenges</li><li>Seasonal content</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Naming and positioning</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Hub names</h3>
+          <p>Emz Arcade, Emz PlayHub, Neon Nest, Pixel Port, Dash District, Emz World, Glow Grid, TapTown, HyperHub, District Arcade.</p>
+        </article>
+        <article class="card">
+          <h3>Tycoon names</h3>
+          <p>Crossroads District Tycoon, Neon City Tycoon, Empire Block, MetroLife Tycoon, District Boss, Skyline Street Tycoon, Urban Loop Tycoon, Nexus City.</p>
+        </article>
+        <article class="card">
+          <h3>Best direction</h3>
+          <p><strong>Emz Arcade</strong> as the hub and <strong>Crossroads District Tycoon</strong> as the flagship gives you one strong brand and one premium hero game.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-box">
+      <div>
+        <h3 style="margin:0 0 10px">Built for your repo</h3>
+        <div>This page is now part of your GitHub Pages site and acts as a polished hub concept and pitch page for future development.</div>
+      </div>
+      <a class="cta" href="https://1emz-oss.github.io/Emzweb/hub.html">Open Live Hub</a>
+    </div>
+  </footer>
+</body>
+</html>
